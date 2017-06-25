@@ -24,17 +24,17 @@
     };
 
     function Location(params) {
-        this.imgUrl = params.url;
-        this.title = params.title;
-        this.address = params.address;
+        this.imgUrl = params.url || "No Image";
+        this.title = params.title || "-";
+        this.address = params.address || "-";
         this.contacts = params.contacts || [];
-        this.description = params.description || "";
+        this.description = params.description || "-";
         this.rate = params.rate || 0;
         this.rateNumber = params.rateNumber || 0;
         this.isFavorite = false;
         this.id = getUniqId();
     }
-
+    
     function Log(params) {
         this.operation = params.operation; // есть 3 операции create, delete, deleteAll
         this.created = Date.now();
@@ -47,18 +47,16 @@
     }
 
     controller.addLocation({
-        title: "Шарада"
-    });
-    controller.addLocation({
-        title: "Пляж"
-
-    });
-    controller.addLocation({
-        title: "Маяк"
-
+        title: "Шарада",
+        url: "assets/images/sharada.jpg",
+        address: "г.Кременчуг ул.Лейтенанта Днепрова,111",
+        contacts: ["+38(067)941-40-11","+38(067)186-87-37","|","sharadabase@mail.ru","sharadabase@yandex.ua"],
+        description: "Коттеджи, детская площадка, бассейн, мангал, турецкая баня, русская баня,футбол (крытый зал),футбол(открытая площадь), теннис(крытый зал),теннис(открытый корт),фитнес, прогулки на катере,вейкборд,рыбалка",
     });
 
-    Modules.add("controller", controller);
+
+
+    Modules.add("controller", controller); //hard code for example visualization
 
 })();
 

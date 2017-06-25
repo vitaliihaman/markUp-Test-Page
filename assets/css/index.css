@@ -90,3 +90,84 @@ a {
     font-size: 13px;
 }
 
+#locationInfo{
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.inputStyle {
+    align-self: center;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    width: 95%;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    font-size: 15px;
+}
+
+.addBtnWrapper{
+    display: flex;
+    justify-content: center;
+
+}
+
+.btnGroup{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button, .delButton{
+    margin: 5px;
+    border-radius: .15em;
+    border: none;
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: .6em 2em .6em 2em;
+    letter-spacing: .1em;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 250ms ease, color 250ms ease;
+    background-color: #18cd4d;
+    color: #fff;
+}
+
+.button:hover, .delButton:hover{
+    background-color:rgba(24, 205, 77, 0.7);
+}
+
+.button:disabled{
+    background-color:rgba(24, 205, 77, 0.5);
+    cursor: not-allowed;
+}
+
+.bottomWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ratingWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.hide{
+    display: none;
+}
+
+

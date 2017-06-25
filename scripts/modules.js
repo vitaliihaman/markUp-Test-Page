@@ -2,7 +2,7 @@ var Modules = window.Modules || {};
 Modules.modules = {};
 /*Object.defineProperty(Modules, "modules", {
  value: {},
- writable: false,
+ writable: true,
  enumerable: false,
  get: function () {
  return this.value;
@@ -10,7 +10,6 @@ Modules.modules = {};
  set: function (value) {
  this.value[] = value;
  }
-
  });*/
 
 Modules.add = function (name, module) {
