@@ -24,7 +24,7 @@
     };
 
     function Location(params) {
-        this.imgUrl = params.url || "No Image";
+        this.imgUrl = params.url || "http://www.gettyimages.com/gi-resources/images/Embed/new/embed2.jpg";
         this.title = params.title || "-";
         this.address = params.address || "-";
         this.contacts = params.contacts || [];
