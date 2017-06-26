@@ -178,4 +178,24 @@ a {
 
 }
 
+.error{
+    border: 1px solid red;
+}
+
+.counters{
+    display: flex;
+    justify-content: center;
+}
+
+.counters p{
+    font-size: 28px;
+}
+
+.green{
+    color: #18cd4d;
+}
+
+.red{
+    color: red;
+}
 

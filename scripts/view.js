@@ -1,7 +1,8 @@
 (function () {
 
     var controller = Modules.get("controller"),
-        Log = Modules.get("log");
+        Log = Modules.get("log"),
+        isEmpty = Modules.get("isEmpty");
 
     function render() {
 
@@ -54,16 +55,9 @@
             currLocation[0].isFavorite = !currLocation[0].isFavorite;
             console.log(currLocation[0].isFavorite);
             render();
-
         });
 
         $(".delButton").on("click", function (e) {
-
-            controller.history.logs.push(new Log({
-                operation: "delete",
-                locationId: controller.locations[controller.locations.length - 1].id
-            }));
-
             controller.deleteLocation($(e.currentTarget).attr("data-id"));
 
             render();
@@ -74,27 +68,39 @@
 
     $("#locationInfo").on("submit", function (event) {
         event.preventDefault();
-        var data = {};
-        for (var i = 0; i < this.length; i++) {
-            if (this[i].type === "reset" || this[i].type === "submit") {
-                continue;
-            }
-            data[this[i].name] = this[i].value;
-        }
-        controller.addLocation(data);
-        controller.history.logs.push(new Log({
-            operation: "create",
-            locationId: controller.locations[controller.locations.length - 1].id
-        }));
+        var data = {},
+            isFormValid = true,
+            self = this;
+        $(".error").removeClass("error");
 
-        $(".borderWrapper").show();
-        $(".formWrapper").hide();
-        $(".funcBtnWrapper").show();
+        data = $(this).serializeArray().reduce(function (temp, currItem, index) {
+            temp[currItem.name] = currItem.value;
+            return temp;
+        }, {});
+        console.log(data);
+
+        Object.keys(data).forEach(function (key,i) {
+            if(!data[key]){
+                $(self).find(`input[name=${key}]`).addClass("error");
+                isFormValid = false;
+            }
+        });
+
+        if (isFormValid) {
+            controller.addLocation(data);
+
+            $(".borderWrapper").show();
+            $(".formWrapper").hide();
+            $(".funcBtnWrapper").show();
+
+        }
 
         render();
     });
 
     $("#addLocationBtn").on("click", function () {
+        $("#locationInfo")[0].reset();
+        $(".error").removeClass("error");
         $(".funcBtnWrapper").hide();
         $(".borderWrapper").hide();
         $(".formWrapper").show();
@@ -118,8 +124,8 @@
         $(".borderWrapper").hide();
 
         var history = controller.history.logs;
-        var counts = `<div><p>Added: ${controller.history.getNumLogsByOperations("create")}</p>  
-                           <p>Deleted: ${controller.history.getNumLogsByOperations("delete")}</p>  
+        var counts = `<div class="counters"><p class="green">Added: <b>${controller.history.getNumLogsByOperations("create")}</b></p>  
+                           <p class="red">Deleted: <b>${controller.history.getNumLogsByOperations("delete")}</b></p>  
                       </div>`;
         historyHtml = history.map(function (obj) {
             return `
@@ -136,9 +142,6 @@
     });
 
     $("#clear").on("click", function () {
-        controller.history.logs.push(new Log({
-            operation: "deleteAll",
-        }));
         controller.deleteAllLocations();
         render();
     })
