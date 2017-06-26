@@ -114,13 +114,13 @@ a {
     font-size: 15px;
 }
 
-.addBtnWrapper{
+.funcBtnWrapper{
     display: flex;
     justify-content: center;
 
 }
 
-.btnGroup{
+.formBtnGroup{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -168,6 +168,14 @@ a {
 
 .hide{
     display: none;
+}
+
+.historyElement{
+    width: 280px;
+    margin: 0 auto;
+    padding: 10px ;
+    border-bottom: 1px solid darkgrey;
+
 }
 
 

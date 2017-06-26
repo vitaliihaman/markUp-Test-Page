@@ -37,8 +37,8 @@
     
     function Log(params) {
         this.operation = params.operation; // есть 3 операции create, delete, deleteAll
-        this.created = Date.now();
-        this.locationId = params.locationId || "";
+        this.created = new Date().toLocaleString();
+        this.locationId = params.locationId || "-";
         this.id = getUniqId();
     }
 
@@ -46,6 +46,7 @@
         return (Math.random() * Math.pow(10, 17)).toString(16);
     }
 
+    //for example:
     controller.addLocation({
         title: "Шарада",
         url: "assets/images/sharada.jpg",
@@ -54,9 +55,8 @@
         description: "Коттеджи, детская площадка, бассейн, мангал, турецкая баня, русская баня,футбол (крытый зал),футбол(открытая площадь), теннис(крытый зал),теннис(открытый корт),фитнес, прогулки на катере,вейкборд,рыбалка",
     });
 
-
-
-    Modules.add("controller", controller); //hard code for example visualization
+    Modules.add("controller", controller);
+    Modules.add("log", Log);
 
 })();
 

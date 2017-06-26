@@ -251,16 +251,25 @@
             <label><h4>Description</h4>
                 <input type="text" class="inputStyle" name="description" placeholder="Write description please...">
             </label>
-            <div class="btnGroup">
-                <button type="button" class="button" name="back"> Back</button>
-                <button type="submit" class="button" name="save">Save</button>
-                <button type="reset" class="button" name="reset"> Reset</button>
+            <div class="formBtnGroup">
+                <button type="button" class="button" id="back"> Back</button>
+                <button type="submit" class="button" id="save">Save</button>
+                <button type="reset" class="button" > Reset</button>
             </div>
         </form>
     </div>
 
-    <div class="addBtnWrapper">
+    <div class="funcBtnWrapper">
         <button id="addLocationBtn" class="button">Add location</button>
+        <button id="history" class="button">Show history</button>
+        <button id="clear" class="button">Clear All</button>
+    </div>
+
+    <div class="history hide">
+        <button id="backFromHistory" class="button">back</button>
+        <div class="historyWrap">
+
+        </div>
     </div>
 </div>
 
